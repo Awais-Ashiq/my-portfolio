@@ -1,0 +1,32 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>All Blogs</h1>
+    <h2>I have written {{ projects.count }} blog{{ projects.count | pluralize }}</h2>
+    <div class="card-columns">
+        {% for project in projects %}
+        <div class="card">
+            <div class="card-body">
+                <h2>
+                    <a href="{% url 'blog:detail' project.id %}" class="text-dark">
+                        {{project.title}}
+                    </a>
+                </h2>
+                <img height="100px" src='{{ project.image.url }}' />
+                <p>{{project.description | truncatechars:50}}</p>
+                {% if project.url %}
+                <br><a href="{{ project.url }}" class="text-dark">{{ project.url }}</a>
+                
+                {% else %}
+                <br><p class="text-dark">No Link Available</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}

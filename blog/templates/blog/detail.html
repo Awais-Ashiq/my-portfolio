@@ -1,0 +1,13 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<div class="container text-center">
+    <h1 class="display-3">{{ blog.title }}</h1>
+    <p class="lead"><img height='500px' src='{{ blog.image.url }}'></p>
+    <br>
+    <hr class="my-2">
+    <p>{{ blog.description }}</p>
+</div>
+
+{% endblock %}
